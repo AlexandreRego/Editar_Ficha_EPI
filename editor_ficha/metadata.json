@@ -1,0 +1,6 @@
+{
+  "name": "Editor de Declaração de EPI",
+  "description": "Gerador e editor de recibos e declarações de entrega de EPI, baseado no modelo PneuBras.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
