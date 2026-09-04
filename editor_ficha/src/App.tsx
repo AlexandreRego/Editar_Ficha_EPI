@@ -960,15 +960,12 @@ export default function App() {
                           </div>
 
                           <div className="col-span-4">
-                            <div className="flex justify-between items-center mb-1">
-                              <label className="block text-[10px] font-semibold text-slate-500">Data Entrega</label>
-                              <span className="text-[8px] font-bold text-amber-600 px-1 py-0.1 bg-amber-50 rounded">Bloqueada</span>
-                            </div>
+                            <label className="block text-[10px] font-semibold text-slate-500 mb-1">Data Entrega</label>
                             <input
                               type="date"
-                              value={getLocalDateString()}
-                              disabled
-                              className="w-full text-[11px] border border-slate-200 rounded p-1 bg-slate-50 text-slate-400 outline-none cursor-not-allowed font-mono"
+                              value={item.dataEntrega}
+                              onChange={(e) => handleItemChange(item.id, 'dataEntrega', e.target.value)}
+                              className="w-full text-[11px] border border-slate-300 rounded p-1 bg-white focus:ring-1 focus:ring-amber-500 focus:border-amber-500 outline-none font-mono text-slate-700"
                             />
                           </div>
 
