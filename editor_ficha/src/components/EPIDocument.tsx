@@ -28,9 +28,6 @@ const getLocalDateString = () => {
 
 export const EPIDocument: React.FC<EPIDocumentProps> = ({ declaration, customLogo = null }) => {
   const todayStr = getLocalDateString();
-  // We want to always display exactly 4 rows in the table to match the original PDF structure.
-  // If there are fewer than 4 items, we pad with empty rows.
-  // If there are more, we display all of them.
   const tableRowsCount = Math.max(4, declaration.items.length);
   const rows = Array.from({ length: tableRowsCount }).map((_, index) => {
     return declaration.items[index] || null;
@@ -46,7 +43,6 @@ export const EPIDocument: React.FC<EPIDocumentProps> = ({ declaration, customLog
       <div>
         {/* Header with Logo and Title */}
         <div className="flex flex-row items-center justify-between gap-6 pb-4">
-          {/* Official PneuBras SVG Logo or Custom Uploaded Logo */}
           {customLogo ? (
             <img 
               src={customLogo} 
@@ -59,7 +55,6 @@ export const EPIDocument: React.FC<EPIDocumentProps> = ({ declaration, customLog
             <PneuBrasLogo height={65} className="flex-shrink-0" />
           )}
 
-          {/* Title block */}
           <div className="text-left flex-1">
             <h1 className="text-[13px] font-bold leading-tight uppercase tracking-tight text-black">
               DECLARAÇÃO DE RECEBIMENTO DE EQUIPAMENTO DE
@@ -186,7 +181,7 @@ export const EPIDocument: React.FC<EPIDocumentProps> = ({ declaration, customLog
                 return (
                   <tr key={item.id} className="h-7 text-black hover:bg-slate-50 transition-colors">
                     <td className="border border-black px-2 py-1 text-center font-mono font-medium">
-                      {formatDateBR(todayStr)}
+                      {formatDateBR(item.dataEntrega)}
                     </td>
                     <td className="border border-black px-2 py-1 text-center font-mono font-bold text-blue-900">
                       {item.codigo || ''}
@@ -206,9 +201,6 @@ export const EPIDocument: React.FC<EPIDocumentProps> = ({ declaration, customLog
                   </tr>
                 );
               } else {
-                // Render empty row to keep the exact table shape
-                // For row index 1, original screenshot shows Un: "UN" as default.
-                // We'll leave it empty unless they explicitly added an item.
                 return (
                   <tr key={`empty-${idx}`} className="h-7">
                     <td className="border border-black px-2 py-1">&nbsp;</td>
