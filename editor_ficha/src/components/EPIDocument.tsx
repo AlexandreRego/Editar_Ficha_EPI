@@ -17,17 +17,7 @@ const formatDateBR = (dateStr: string) => {
   return dateStr;
 };
 
-// Helper to get local date string (YYYY-MM-DD) safely avoiding timezone shifts
-const getLocalDateString = () => {
-  const d = new Date();
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
-
 export const EPIDocument: React.FC<EPIDocumentProps> = ({ declaration, customLogo = null }) => {
-  const todayStr = getLocalDateString();
   const tableRowsCount = Math.max(4, declaration.items.length);
   const rows = Array.from({ length: tableRowsCount }).map((_, index) => {
     return declaration.items[index] || null;
@@ -220,13 +210,7 @@ export const EPIDocument: React.FC<EPIDocumentProps> = ({ declaration, customLog
       </div>
 
       {/* Footer Signature Section */}
-      <div className="mt-8 pt-4 flex flex-row items-end justify-between text-[11px]">
-        <div>
-          <span className="font-bold text-slate-950">Data:</span>
-          <span className="font-mono text-slate-900 ml-1">
-            {formatDateBR(todayStr)}
-          </span>
-        </div>
+      <div className="mt-8 pt-4 flex flex-row items-end justify-end text-[11px]">
         <div className="w-[60%] flex flex-col items-center">
           <div className="w-full border-b border-black h-1"></div>
           <span className="text-[9px] uppercase font-bold text-slate-600 mt-1.5 text-center tracking-wider">
