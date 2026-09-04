@@ -885,18 +885,7 @@ export default function App() {
                     </div>
 
                     <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <label className="block text-xs font-semibold text-slate-600">Data da Declaração</label>
-                        <span className="text-[10px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
-                          Sempre Atual
-                        </span>
-                      </div>
-                      <input
-                        type="date"
-                        value={getLocalDateString()}
-                        disabled
-                        className="w-full text-sm border border-slate-200 rounded-lg p-2 bg-slate-50 text-slate-500 outline-none cursor-not-allowed font-mono"
-                      />
+                      
                     </div>
                   </div>
                 </div>
